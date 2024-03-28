@@ -2,7 +2,8 @@
 require_once '../models/ViewModel.php';
 require_once '../config/db.php';
 
-class ViewController{
+class ViewController
+{
     private $db;
     private $viewModel;
 
@@ -18,7 +19,7 @@ class ViewController{
 
     public function ViewArticle()
     {
-        if (isset($_GET['id'])){
+        if (isset($_GET['id'])) {
             $id = $_GET['id'];
         }
 

@@ -1,12 +1,15 @@
 <?php
-class View{
+class View
+{
     private $db;
 
-    public function __construct($db) {
+    public function __construct($db)
+    {
         $this->db = $db;
     }
 
-    public function getArticle($id){
+    public function getArticle($id)
+    {
         $sql = 'SELECT * FROM articles WHERE id = :id';
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);

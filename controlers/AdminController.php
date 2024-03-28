@@ -3,11 +3,13 @@
 require_once '../models/AdminModel.php';
 require_once '../config/db.php';
 
-class AdminController{
+class AdminController
+{
     private $adminModel;
     private $db;
 
-    public function __construct(){
+    public function __construct()
+    {
         global $db;
         $this->db = $db;
         $this->adminModel = new Admin($this->db);
@@ -15,7 +17,8 @@ class AdminController{
 
 
     public function logIn()
-    {   include '../views/articles/login.php';
+    {
+        include '../views/articles/login.php';
         session_start();
         if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['submit'])) {
             $username = $_POST['username'];
@@ -24,11 +27,12 @@ class AdminController{
 
 
 
-        if($this->adminModel->authenticate($username,$password)) {
-            header("Location: ../public/index.php?route=show");
-        }else{
-            echo "Wrong log in or password";
+            if ($this->adminModel->authenticate($username,$password)) {
+                header("Location: ../public/index.php?route=show");
+            }else {
+                echo "Wrong log in or password";
+            }
         }
-    }}
+    }
 
 }

@@ -4,7 +4,8 @@ require_once '../models/DeleteModel.php';
 require_once '../models/ArticleModel.php';
 require_once '../config/db.php';
 
-class DeleteController{
+class DeleteController
+{
     private $deleteModel;
     private $articleModel;
     private $db;
@@ -20,7 +21,7 @@ class DeleteController{
     public  function DeleteArticle()
     {
 
-        if(isset($_GET['id'])){
+        if (isset($_GET['id'])) {
             $id = $_GET['id'];
             $this->deleteModel->deleteThisArticle($id);
         }

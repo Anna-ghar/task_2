@@ -1,10 +1,12 @@
 <?php
 
-class Admin{
+class Admin
+{
 
     private $db;
 
-    public function __construct($db){
+    public function __construct($db)
+    {
         $this->db = $db;
     }
 

@@ -1,7 +1,8 @@
 <?php
 require_once '../models/CreateModel.php';
 require_once '../config/db.php';
-class CreateController{
+class CreateController
+{
     private $createModel;
     private $db;
 
