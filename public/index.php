@@ -3,11 +3,11 @@
 require_once '../config/db.php';
 require_once '../controlers/ArticleController.php';
 require_once '../controlers/AdminController.php';
-require_once '../controlers/CreateController.php';
-require_once '../controlers/DeleteController.php';
-require_once '../controlers/ViewController.php';
-require_once '../controlers/UpdateController.php';
+
+//require_once '../controlers/ViewController.php';
 global $db;
+
+
 
 
 
@@ -23,19 +23,19 @@ switch ($route) {
         $show->show();
         break;
     case 'delete':
-        $delete = new DeleteController($db);
+        $delete = new ArticleController($db);
         $delete->DeleteArticle();
         break;
     case 'create':
-        $create = new CreateController($db);
+        $create = new ArticleController($db);
         $create->createArticle();
         break;
     case 'view':
-        $view = new ViewController($db);
+        $view = new ArticleController($db);
         $view->ViewArticle();
         break;
     case 'update':
-        $update = new UpdateController($db);
+        $update = new ArticleController($db);
         $update->UpdateArticle();
         break;
 
