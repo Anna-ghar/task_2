@@ -21,7 +21,7 @@ class Article
 
           $start = ($_SESSION['page'] - 1) * $itemPerPage;
 
-          $sql = "SELECT * FROM articles ORDER BY ID LIMIT $itemPerPage OFFSET $start";
+          $sql = "SELECT * FROM articles LIMIT $itemPerPage OFFSET $start";
           $stmt = $this->db->query($sql);
 
           $sql2 = "SELECT COUNT(id) AS total FROM articles ";
