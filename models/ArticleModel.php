@@ -14,12 +14,12 @@ class Article
 
           $itemPerPage = 3;
           if (isset($_GET['page'])) {
-              $_SESSION['page'] = $_GET['page'];
+              $page = $_GET['page'];
           } else {
-              $_SESSION['page'] = 1;
+              $page = 1;
           }
 
-          $start = ($_SESSION['page'] - 1) * $itemPerPage;
+          $start = ($page - 1) * $itemPerPage;
 
           $sql = "SELECT * FROM articles LIMIT $itemPerPage OFFSET $start";
           $stmt = $this->db->query($sql);
