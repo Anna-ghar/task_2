@@ -17,7 +17,7 @@ require_once '../config/db.php';
      }
      public function show()
      {
-         $articles = $this->articleModel->getAllArticles();
+         list($articles,$totalPages) = $this->articleModel->getArticles();
          include '../views/articles/show.php';
      }
 
@@ -35,9 +35,7 @@ require_once '../config/db.php';
          if (isset($_GET['id'])) {
              $id = $_GET['id'];
              $this->articleModel->deleteThisArticle($id);
-         }
-         $articles = $this->articleModel->getAllArticles();
-         include '../views/articles/show.php';
+         };
 
      }
 

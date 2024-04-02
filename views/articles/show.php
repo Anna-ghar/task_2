@@ -25,6 +25,12 @@
         <?php endforeach; ?>
     </ul>
     </form>
+    <?php
+
+    for ($i=1; $i<=$totalPages; $i++) {
+        echo "<a href='index.php?route=show&page=$i'>$i</a> ";
+    };
+    ?>
 </div>
 
 </body>

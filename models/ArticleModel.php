@@ -9,11 +9,28 @@ class Article
         $this->db = $db;
     }
 
-    public function getAllArticles()
+    public function getArticles()
     {
-        $sql = 'SELECT * FROM articles';
-        $stmt = $this->db->query($sql);
-        return  $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+          $itemPerPage = 3;
+          if (isset($_GET['page'])) {
+              $_SESSION['page'] = $_GET['page'];
+          } else {
+              $_SESSION['page'] = 1;
+          }
+
+          $start = ($_SESSION['page'] - 1) * $itemPerPage;
+
+          $sql = "SELECT * FROM articles ORDER BY ID LIMIT $itemPerPage OFFSET $start";
+          $stmt = $this->db->query($sql);
+
+          $sql2 = "SELECT COUNT(id) AS total FROM articles ";
+          $stmt2 = $this->db->query($sql2);
+          $row = $stmt2->fetch(PDO::FETCH_ASSOC);
+          $totalPages = ceil($row['total']/$itemPerPage);
+
+
+          return  [$stmt->fetchAll(PDO::FETCH_ASSOC), $totalPages ];
     }
 
     public function createNewArticle($title, $content)
